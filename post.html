@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post — Christopher Austin · On the Fairway</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Crimson+Pro:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep: #1a3325;
+    --green-mid: #2d5a3d;
+    --green-light: #4a7c5e;
+    --gold: #b8965a;
+    --gold-light: #d4b07a;
+    --cream: #f5f0e8;
+    --cream-dark: #ede5d4;
+    --white: #fdfaf5;
+    --text-dark: #1c1a16;
+    --text-mid: #4a4540;
+    --text-light: #7a7068;
+    --border: rgba(184,150,90,0.25);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--white); color:var(--text-dark); font-family:'Crimson Pro',Georgia,serif; font-size:18px; line-height:1.7; overflow-x:hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(26,51,37,0.97); backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(184,150,90,0.3);
+    padding:0 4rem; display:flex; align-items:center; justify-content:space-between; height:64px;
+  }
+  .nav-logo { font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--gold-light); letter-spacing:0.06em; text-decoration:none; font-style:italic; }
+  .nav-links { display:flex; gap:2.5rem; list-style:none; }
+  .nav-links a { color:rgba(245,240,232,0.72); text-decoration:none; font-family:'Cormorant Garamond',serif; font-size:0.82rem; letter-spacing:0.14em; text-transform:uppercase; transition:color 0.25s; }
+  .nav-links a:hover, .nav-links a.active { color:var(--gold-light); }
+
+  /* ── COMMONS ── */
+  .container { max-width:780px; margin:0 auto; padding:0 2rem; }
+
+  /* ── ARTICLE ── */
+  .post-wrap { padding:9rem 0 6rem; }
+
+  .post-back {
+    display:inline-flex; align-items:center; gap:0.5rem;
+    font-family:'Cormorant Garamond',serif; font-size:0.78rem; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--text-light); text-decoration:none;
+    border:1px solid var(--border); padding:0.45rem 1rem;
+    transition:all 0.2s; margin-bottom:3rem;
+  }
+  .post-back:hover { background:var(--cream); color:var(--green-mid); border-color:rgba(184,150,90,0.45); }
+
+  .post-eyebrow {
+    font-family:'Cormorant Garamond',serif; font-size:0.72rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold);
+    display:flex; align-items:center; gap:0.75rem; margin-bottom:1.25rem;
+  }
+  .post-eyebrow::after { content:''; display:block; width:28px; height:1px; background:var(--gold); opacity:0.5; }
+
+  .post-title {
+    font-family:'Playfair Display',serif;
+    font-size:clamp(2rem,5vw,3.2rem);
+    color:var(--green-deep); line-height:1.15;
+    margin-bottom:1.5rem;
+  }
+
+  .post-meta {
+    display:flex; align-items:center; flex-wrap:wrap; gap:0.6rem;
+    font-family:'Cormorant Garamond',serif; font-size:0.85rem; color:var(--text-light);
+    padding-bottom:2rem; border-bottom:1px solid var(--border); margin-bottom:2.5rem;
+  }
+  .post-meta .author { color:var(--green-mid); font-weight:500; }
+  .meta-sep { color:var(--border); }
+
+  .post-body {
+    font-family:'Crimson Pro',Georgia,serif; font-size:1.15rem; line-height:1.85;
+    color:var(--text-mid); white-space:pre-wrap; word-break:break-word;
+  }
+
+  .post-footer {
+    margin-top:3.5rem; padding-top:2rem; border-top:1px solid var(--border);
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;
+  }
+  .post-footer-link {
+    display:inline-flex; align-items:center; gap:0.5rem;
+    font-family:'Cormorant Garamond',serif; font-size:0.78rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--text-light); text-decoration:none;
+    border:1px solid var(--border); padding:0.45rem 1rem;
+    transition:all 0.2s;
+  }
+  .post-footer-link:hover { background:var(--cream); color:var(--green-mid); }
+
+  /* Not found */
+  .not-found { text-align:center; padding:4rem 2rem; }
+  .not-found h2 { font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--green-deep); margin-bottom:1rem; }
+  .not-found p { font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--text-light); }
+  .not-found a { color:var(--gold); text-decoration:none; }
+
+  /* ── FOOTER ── */
+  footer { background:var(--green-deep); padding:3rem 0; border-top:1px solid rgba(184,150,90,0.18); }
+  .footer-inner { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.5rem; }
+  .footer-logo { font-family:'Playfair Display',serif; font-size:1rem; color:var(--gold-light); font-style:italic; }
+  .footer-info { font-family:'Cormorant Garamond',serif; font-size:0.8rem; color:rgba(245,240,232,0.38); letter-spacing:0.08em; }
+
+  @media(max-width:900px){
+    nav { padding:0 1.5rem; }
+    .nav-links { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Christopher Austin · On the Fairway</a>
+  <ul class="nav-links">
+    <li><a href="index.html#home-club">Home Club</a></li>
+    <li><a href="index.html#rounds">Rounds</a></li>
+    <li><a href="index.html#goals">2026 Goals</a></li>
+    <li><a href="index.html#gallery">Gallery</a></li>
+    <li><a href="index.html#about">The Game</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+  </ul>
+</nav>
+
+<div class="post-wrap">
+  <div class="container" id="post-container">
+    <!-- filled by JS -->
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container" style="max-width:1100px;">
+    <div class="footer-inner">
+      <div class="footer-logo">Christopher Austin · On the Fairway</div>
+      <div class="footer-info">Hopedale Country Club · GHIN 1234567</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function formatDate(iso) {
+  const d = new Date(iso);
+  return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+}
+
+function formatTime(iso) {
+  const d = new Date(iso);
+  return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+}
+
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  const container = document.getElementById('post-container');
+
+  if (!id) {
+    renderNotFound(container);
+    return;
+  }
+
+  let posts = [];
+  try { posts = JSON.parse(localStorage.getItem('golf_blog_posts') || '[]'); } catch {}
+
+  const post = posts.find(p => p.id === id && p.published);
+  if (!post) {
+    renderNotFound(container);
+    return;
+  }
+
+  document.title = `${post.title} — Christopher Austin · On the Fairway`;
+
+  container.innerHTML = `
+    <a class="post-back" href="blog.html">← Back to Blog</a>
+    <div class="post-eyebrow">From the Fairway</div>
+    <h1 class="post-title">${escHtml(post.title)}</h1>
+    <div class="post-meta">
+      <span>By <span class="author">${escHtml(post.author)}</span></span>
+      <span class="meta-sep">·</span>
+      <span>${formatDate(post.publishedAt)}</span>
+      <span class="meta-sep">·</span>
+      <span>${formatTime(post.publishedAt)}</span>
+    </div>
+    <div class="post-body">${escHtml(post.body)}</div>
+    <div class="post-footer">
+      <a class="post-footer-link" href="blog.html">← All Posts</a>
+      <a class="post-footer-link" href="admin.html?edit=${encodeURIComponent(post.id)}">Edit Post</a>
+    </div>
+  `;
+})();
+
+function renderNotFound(container) {
+  container.innerHTML = `
+    <div class="not-found">
+      <h2>Post not found</h2>
+      <p>This post may have been removed or the link is invalid.<br>
+         <a href="blog.html">← Return to the blog</a></p>
+    </div>
+  `;
+}
+</script>
+</body>
+</html>
